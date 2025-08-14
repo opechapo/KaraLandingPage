@@ -1,7 +1,7 @@
 import "./App.css";
 import React from "react";
 import { motion } from "framer-motion";
-import KaraLogo from "./assets/KaraLogo1.png"; // Import logo from assets
+import KaraLogo from "./assets/KaraLogo1.png";
 
 function App() {
   // Animation variants for sections
@@ -17,7 +17,7 @@ function App() {
   // Animation variants for header titles
   const titleVariants = {
     initial: { scale: 1 },
-    hover: { scale: 1.05, color: "#7C3AED", transition: { duration: 0.3 } }, // Updated to accent purple
+    hover: { scale: 1.05, color: "#A78BFA", transition: { duration: 0.3 } }, // Brighter purple for hover
   };
 
   return (
@@ -73,7 +73,7 @@ function App() {
                   href="https://kara-frontend.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-purple-600 px-4 py-2 rounded hover:bg-purple-500 transition-colors duration-300"
+                  className="bg-purple-500 px-4 py-2 rounded hover:bg-purple-400 transition-colors duration-300"
                 >
                   Enter dApp
                 </a>
@@ -83,42 +83,59 @@ function App() {
         </div>
       </header>
 
-      {/* Hero Section */}
+      {/* Hero Section with Blockchain Effect */}
       <motion.section
         id="home"
-        className="bg-gradient-to-r from-indigo-900 to-indigo-700 py-20 text-center"
+        className="relative bg-gradient-to-r from-purple-600 to-blue-500 py-16 text-center overflow-hidden"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         variants={sectionVariants}
       >
-        <div className="max-w-4xl mx-auto px-4">
+        {/* Blockchain Effect Background */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="blockchain-nodes">
+            {[...Array(10)].map((_, i) => (
+              <div
+                key={i}
+                className="node"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  animationDelay: `${Math.random() * 5}s`,
+                }}
+              ></div>
+            ))}
+          </div>
+        </div>
+        <div className="relative max-w-4xl mx-auto px-4 z-10">
           <motion.h2
-            className="text-5xl font-bold mb-4"
+            className="text-5xl font-bold mb-4 text-white"
             variants={titleVariants}
             initial="initial"
             whileHover="hover"
           >
             <img src={KaraLogo} alt="KARA Logo" className="h-16 mx-auto" />
-            Decentralized Marketplace
+            KARA: Decentralized Marketplace
           </motion.h2>
           <motion.p
-            className="text-xl mb-8"
+            className="text-xl mb-8 text-gray-100"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
-            Seamless exchange of real life goods and services for
-            cryptocurrency. Secure, efficient, and user-friendly – access with
-            just a browser and wallet.
+            Trade goods and services with cryptocurrency securely and
+            effortlessly. KARA’s blockchain-powered platform ensures
+            transparency, low fees, and user control—all from your browser with
+            a crypto wallet.
           </motion.p>
           <a
             href="https://kara-frontend.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-purple-600 px-6 py-3 rounded-lg text-lg hover:bg-purple-500 transition-transform duration-300 hover:scale-105"
+            className="bg-purple-400 px-6 py-3 rounded-lg text-lg text-white hover:bg-purple-300 transition-transform duration-300 hover:scale-105"
           >
-            Get Started
+            Start Trading Now
           </a>
         </div>
       </motion.section>
@@ -126,7 +143,7 @@ function App() {
       {/* Why KARA? (Benefits) */}
       <motion.section
         id="benefits"
-        className="py-16 bg-indigo-900"
+        className="py-12 bg-indigo-900"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -134,41 +151,41 @@ function App() {
       >
         <div className="max-w-7xl mx-auto px-4">
           <motion.h2
-            className="text-4xl font-bold text-center mb-12"
+            className="text-4xl font-bold text-center mb-8"
             variants={titleVariants}
             initial="initial"
             whileHover="hover"
           >
-            Why KARA?
+            Why Choose KARA?
           </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
-                title: "Reduced Costs",
-                desc: "Eliminate intermediaries to lower transaction fees and operational costs.",
+                title: "Low Costs",
+                desc: "No intermediaries, minimizing transaction fees.",
               },
               {
-                title: "Increased Transparency",
-                desc: "Blockchain ensures open and verifiable transactions, fostering trust.",
+                title: "Transparent",
+                desc: "Blockchain ensures verifiable, open transactions.",
               },
               {
-                title: "Enhanced Security",
-                desc: "Decentralization and smart contracts make the platform resilient to attacks.",
+                title: "Secure",
+                desc: "Smart contracts and escrow protect your trades.",
               },
               {
-                title: "Greater User Control",
-                desc: "Full control over data, keys, and transactions with non-custodial wallets.",
+                title: "User Control",
+                desc: "Non-custodial wallets give you full control.",
               },
             ].map((item, index) => (
               <motion.div
                 key={index}
-                className="bg-indigo-800 p-6 rounded-lg shadow hover:shadow-xl transition-shadow duration-300"
+                className="bg-indigo-800 p-4 rounded-lg shadow hover:shadow-xl transition-shadow duration-300"
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: index * 0.2, duration: 0.5 }}
               >
-                <h3 className="text-2xl font-semibold mb-4">{item.title}</h3>
-                <p>{item.desc}</p>
+                <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+                <p className="text-sm">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -178,7 +195,7 @@ function App() {
       {/* Features */}
       <motion.section
         id="features"
-        className="py-16 bg-indigo-950"
+        className="py-12 bg-indigo-950"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -186,59 +203,47 @@ function App() {
       >
         <div className="max-w-7xl mx-auto px-4">
           <motion.h2
-            className="text-4xl font-bold text-center mb-12"
+            className="text-4xl font-bold text-center mb-8"
             variants={titleVariants}
             initial="initial"
             whileHover="hover"
           >
-            Explore Our Powerful Features
+            Key Features
           </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               {
-                title: "Security & Escrow",
-                desc: "Smart contracts and encryption protect transactions; escrow holds funds until delivery.",
+                title: "Secure Transactions",
+                desc: "Smart contracts and escrow ensure safe trades.",
               },
               {
-                title: "Transparency",
-                desc: "Publicly verifiable transaction history for every product.",
+                title: "Easy Access",
+                desc: "Connect with MetaMask or WalletConnect.",
               },
               {
-                title: "Easy Onboarding",
-                desc: "Wallet-based authentication with MetaMask or WalletConnect.",
-              },
-              {
-                title: "Product Listing",
-                desc: "List items with metadata, prices, and media files.",
-              },
-              {
-                title: "Cryptocurrency Payments",
-                desc: "Support for ETH, BNB, USDT/USDC with secure escrow.",
-              },
-              {
-                title: "Monetization",
-                desc: "Revenue through transaction commission fees.",
+                title: "Crypto Payments",
+                desc: "Pay with ETH, BNB, USDT, or USDC.",
               },
             ].map((item, index) => (
               <motion.div
                 key={index}
-                className="bg-indigo-800 p-6 rounded-lg shadow hover:shadow-xl transition-shadow duration-300"
+                className="bg-indigo-800 p-4 rounded-lg shadow hover:shadow-xl transition-shadow duration-300"
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: index * 0.2, duration: 0.5 }}
               >
-                <h3 className="text-2xl font-semibold mb-4">{item.title}</h3>
-                <p>{item.desc}</p>
+                <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+                <p className="text-sm">{item.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </motion.section>
 
-      {/* Roadmap / Future Plans */}
+      {/* Roadmap */}
       <motion.section
         id="roadmap"
-        className="py-16 bg-indigo-900"
+        className="py-12 bg-indigo-900"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -246,55 +251,47 @@ function App() {
       >
         <div className="max-w-7xl mx-auto px-4">
           <motion.h2
-            className="text-4xl font-bold text-center mb-12"
+            className="text-4xl font-bold text-center mb-8"
             variants={titleVariants}
             initial="initial"
             whileHover="hover"
           >
-            Roadmap & Future Plans
+            Future Plans
           </motion.h2>
-          <div className="space-y-8">
+          <div className="space-y-6">
             {[
               {
-                title: "Negotiate Before Pay",
-                desc: "Chat box integration with WebSocket for buyer-seller negotiations.",
+                title: "Negotiation Chat",
+                desc: "WebSocket-based chat for buyer-seller deals.",
               },
               {
                 title: "Full Decentralization",
-                desc: "Store all transactions on-chain with advanced blockchain tech.",
+                desc: "Store all transactions on-chain.",
               },
               {
-                title: "Marketplace Tokens & DAO",
-                desc: "Introduce tokens for governance, incentives, and rewards.",
-              },
-              {
-                title: "Referral System",
-                desc: "Earn rewards for successful referrals.",
-              },
-              {
-                title: "Reputation System",
-                desc: "Decentralized reviews with token rewards for positive contributions.",
+                title: "Tokens & DAO",
+                desc: "Governance and rewards via marketplace tokens.",
               },
             ].map((item, index) => (
               <motion.div
                 key={index}
-                className="bg-indigo-800 p-6 rounded-lg shadow hover:shadow-xl transition-shadow duration-300"
+                className="bg-indigo-800 p-4 rounded-lg shadow hover:shadow-xl transition-shadow duration-300"
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.2, duration: 0.5 }}
               >
-                <h3 className="text-2xl font-semibold mb-4">{item.title}</h3>
-                <p>{item.desc}</p>
+                <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+                <p className="text-sm">{item.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </motion.section>
 
-      {/* Documentation Section */}
+      {/* Documentation */}
       <motion.section
         id="docs"
-        className="py-16 bg-indigo-950"
+        className="py-12 bg-indigo-950"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -302,24 +299,22 @@ function App() {
       >
         <div className="max-w-7xl mx-auto px-4">
           <motion.h2
-            className="text-4xl font-bold text-center mb-12"
+            className="text-4xl font-bold text-center mb-8"
             variants={titleVariants}
             initial="initial"
             whileHover="hover"
           >
-            KARA Documentation
+            Documentation
           </motion.h2>
-          <div className="space-y-12">
+          <div className="space-y-6">
             {[
               {
-                title: "Project Overview",
+                title: "Overview",
                 desc: (
                   <>
-                    KARA is a decentralized marketplace dApp for trading goods
-                    and services with cryptocurrency on EVM-compatible
-                    blockchains. It offers a secure, efficient, and
-                    user-friendly platform accessible via a browser with a
-                    crypto wallet. Visit:{" "}
+                    KARA is a decentralized marketplace for trading goods and
+                    services with cryptocurrency on EVM blockchains. Access it
+                    at{" "}
                     <a
                       href="https://kara-frontend.vercel.app/"
                       target="_blank"
@@ -333,171 +328,27 @@ function App() {
                 ),
               },
               {
-                title: "Goals and Mission",
-                desc: (
-                  <>
-                    <p>
-                      <strong>Goal:</strong> Create a secure platform for
-                      seamless crypto-based trading.
-                    </p>
-                    <p>
-                      <strong>Mission:</strong> Make cryptocurrency transactions
-                      accessible, reliable, and as intuitive as fiat
-                      transactions.
-                    </p>
-                  </>
-                ),
+                title: "Mission",
+                desc: "Enable secure, accessible crypto trading as intuitive as fiat.",
               },
               {
-                title: "Architecture",
-                desc: (
-                  <ul className="list-disc pl-6 space-y-2">
-                    <li>
-                      <strong>Smart Contracts:</strong> Automate transactions
-                      and ensure security with escrow.
-                    </li>
-                    <li>
-                      <strong>Non-Custodial Wallets:</strong> Users control
-                      private keys and funds.
-                    </li>
-                    <li>
-                      <strong>Marketplace:</strong> Connects buyers and sellers
-                      under one platform.
-                    </li>
-                    <li>
-                      <strong>Web Interface:</strong> User-friendly design for
-                      accessibility.
-                    </li>
-                  </ul>
-                ),
-              },
-              {
-                title: "Key Features",
-                desc: (
-                  <ul className="list-disc pl-6 space-y-2">
-                    <li>
-                      <strong>Security:</strong> Smart contracts and encryption;
-                      escrow for safe transactions.
-                    </li>
-                    <li>
-                      <strong>Transparency:</strong> Publicly verifiable
-                      transaction history.
-                    </li>
-                    <li>
-                      <strong>Onboarding:</strong> Wallet-based authentication
-                      (MetaMask, WalletConnect).
-                    </li>
-                    <li>
-                      <strong>Product Listing:</strong> Sellers list items with
-                      metadata.
-                    </li>
-                    <li>
-                      <strong>Payments:</strong> Supports ETH, BNB, USDT/USDC
-                      with escrow.
-                    </li>
-                    <li>
-                      <strong>Monetization:</strong> Revenue via transaction
-                      commission fees.
-                    </li>
-                  </ul>
-                ),
-              },
-              {
-                title: "Benefits to Society",
-                desc: (
-                  <ul className="list-disc pl-6 space-y-2">
-                    <li>
-                      <strong>Reduced Costs:</strong> No intermediaries, lower
-                      fees.
-                    </li>
-                    <li>
-                      <strong>Transparency:</strong> Blockchain fosters trust.
-                    </li>
-                    <li>
-                      <strong>Security:</strong> Decentralized and resilient to
-                      attacks.
-                    </li>
-                    <li>
-                      <strong>User Control:</strong> Full control over data and
-                      transactions.
-                    </li>
-                  </ul>
-                ),
-              },
-              {
-                title: "Future Plans",
-                desc: (
-                  <ul className="list-disc pl-6 space-y-2">
-                    <li>
-                      <strong>Negotiation System:</strong> WebSocket chat for
-                      buyer-seller negotiations.
-                    </li>
-                    <li>
-                      <strong>Full Decentralization:</strong> On-chain
-                      transaction storage.
-                    </li>
-                    <li>
-                      <strong>Tokens & DAO:</strong> Governance and incentives
-                      via tokens.
-                    </li>
-                    <li>
-                      <strong>Referral System:</strong> Token rewards for
-                      referrals.
-                    </li>
-                    <li>
-                      <strong>Reputation System:</strong> Decentralized reviews
-                      with token rewards.
-                    </li>
-                  </ul>
-                ),
-              },
-              {
-                title: "Tools and Frameworks",
-                desc: (
-                  <ul className="list-disc pl-6 space-y-2">
-                    <li>
-                      <strong>Blockchain:</strong> Ethereum, BSC, Polygon,
-                      Solana; Layer 2 for scalability.
-                    </li>
-                    <li>
-                      <strong>Smart Contracts:</strong> Solidity for EVM
-                      platforms.
-                    </li>
-                    <li>
-                      <strong>Frontend:</strong> React.js, deployed on Vercel.
-                    </li>
-                    <li>
-                      <strong>Backend:</strong> Node.js/Express.js, deployed on
-                      Render.
-                    </li>
-                    <li>
-                      <strong>Database:</strong> MongoDB (off-chain).
-                    </li>
-                    <li>
-                      <strong>Wallet Integration:</strong> Wagmi and RainbowKit
-                      for seamless wallet connections.
-                    </li>
-                  </ul>
-                ),
-              },
-              {
-                title: "Conclusion",
-                desc: "KARA revolutionizes crypto-based trading with security, efficiency, and accessibility, empowering users to integrate cryptocurrency into daily life.",
+                title: "Tech Stack",
+                desc: "Built with React.js, Solidity, Node.js, MongoDB, and wallet integrations (Wagmi, RainbowKit).",
               },
             ].map((item, index) => (
               <motion.div
                 key={index}
-                className="bg-indigo-800 p-6 rounded-lg shadow hover:shadow-xl transition-shadow duration-300"
+                className="bg-indigo-800 p-4 rounded-lg shadow hover:shadow-xl transition-shadow duration-300"
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.2, duration: 0.5 }}
               >
-                <h3 className="text-2xl font-semibold mb-4">{item.title}</h3>
-                {item.desc}
+                <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+                <p className="text-sm">{item.desc}</p>
               </motion.div>
             ))}
           </div>
-          <div className="text-center mt-8">
+          <div className="text-center mt-6">
             <a
               href="https://kara-frontend.vercel.app/"
               target="_blank"

@@ -1,84 +1,31 @@
-/* App.css */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* Smooth transitions for nav links */
-nav a {
-  transition: color 0.3s ease;
+/* Blockchain effect for Hero section */
+.blockchain-nodes {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
-/* Button hover effects */
-a.bg-purple-600 {
-  transition: background-color 0.3s ease, transform 0.3s ease;
+.node {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  animation: moveNode 10s linear infinite;
 }
 
-/* Card hover effects */
-.bg-indigo-800,
-.bg-indigo-900 {
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-}
-.bg-indigo-800:hover,
-.bg-indigo-900:hover {
-  transform: translateY(-5px);
-}
-
-/* Ensure logo responsiveness */
-header img,
-footer img {
-  max-height: 48px;
-}
-
-@media (max-width: 640px) {
-  header img,
-  footer img {
-    max-height: 36px;
+@keyframes moveNode {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.3;
   }
-}
-
-/* Custom color palette */
-:root {
-  --primary-indigo: #4c1d95; /* Deep indigo for buttons and backgrounds */
-  --accent-purple: #7c3aed; /* Vibrant purple for hover and links */
-  --light-purple: #a78bfa; /* Softer purple for gradients */
-  --white: #ffffff; /* White for text and accents */
-  --dark-indigo: #1e1e2e; /* Dark indigo-gray for main background */
-  --medium-indigo: #2d2d44; /* Medium indigo-gray for sections/cards */
-}
-
-/* Apply color palette */
-.bg-indigo-950 {
-  background-color: var(--dark-indigo);
-}
-
-.bg-indigo-900 {
-  background-color: var(--medium-indigo);
-}
-
-.bg-indigo-800 {
-  background-color: #3730a3; /* Slightly lighter indigo for cards */
-}
-
-.bg-purple-600 {
-  background-color: var(--primary-indigo);
-}
-
-.bg-purple-600:hover {
-  background-color: var(--accent-purple);
-}
-
-.text-purple-400 {
-  color: var(--accent-purple);
-}
-
-.text-white {
-  color: var(--white);
-}
-
-.bg-gradient-to-r.from-indigo-900 {
-  background-image: linear-gradient(
-    to right,
-    var(--primary-indigo),
-    var(--medium-indigo)
-  );
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(50px, -50px) scale(1.2);
+    opacity: 0.3;
+  }
 }
