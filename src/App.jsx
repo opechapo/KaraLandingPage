@@ -108,9 +108,9 @@ function App() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
-            Seamless exchange of real goods and services for cryptocurrency.
-            Secure, efficient, and user-friendly – access with just a browser
-            and wallet.
+            Seamless exchange of real life goods and services for
+            cryptocurrency. Secure, efficient, and user-friendly – access with
+            just a browser and wallet.
           </motion.p>
           <a
             href="https://kara-frontend.vercel.app/"
