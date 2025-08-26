@@ -116,7 +116,7 @@ function App() {
             whileHover="hover"
           >
             <img src={KaraLogo} alt="KARA Logo" className="h-16 mx-auto" />
-            KARA: Decentralized Marketplace
+            Decentralized Marketplace
           </motion.h2>
           <motion.p
             className="text-xl mb-8 text-gray-100"
