@@ -21,9 +21,9 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-indigo-950 text-white font-sans">
+    <div className="min-h-screen bg-white text-white font-sans">
       {/* Header */}
-      <header className="sticky top-0 bg-indigo-900 shadow-md z-10">
+      <header className="sticky top-0 bg-indigo-800 shadow-md z-10">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
           <img src={KaraLogo} alt="KARA Logo" className="h-12" />
           <nav>
@@ -143,7 +143,7 @@ function App() {
       {/* Why KARA? (Benefits) */}
       <motion.section
         id="benefits"
-        className="py-12 bg-indigo-900"
+        className="py-12 bg-indigo-700"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -195,7 +195,7 @@ function App() {
       {/* Features */}
       <motion.section
         id="features"
-        className="py-12 bg-indigo-950"
+        className="py-12 bg-indigo-700"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -291,7 +291,7 @@ function App() {
       {/* Documentation */}
       <motion.section
         id="docs"
-        className="py-12 bg-indigo-950"
+        className="py-12 bg-indigo-800"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
